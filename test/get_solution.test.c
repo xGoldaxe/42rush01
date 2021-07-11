@@ -1,15 +1,15 @@
-
 #include <stdio.h>
 
 int	*create_array(int size);
-int	*get_solution(int *solution, int *border_value, int size);
+int	*get_solution(int *border_value, int size);
 void	ft_arradd(int src, int *dest);
+void	print_solution(int *solution, int size);
 
 int main()
 {
 	int 	*solutions;
 	int		*border_value;
-	char	tab[17] = "4321122243211222";
+	char	tab[17] = "2132221324132122";
 	int 	i;
 	int		*result;
 
@@ -18,12 +18,10 @@ int main()
 	i = 0;
 	while (i < 16)
 	{
-		ft_arradd(tab[i], border_value);
+		ft_arradd(tab[i] - '0', border_value);
 		i++;
 	}
-	result = get_solution(solutions, border_value, 4);
-	printf("%d\n", result[0]);
-	printf("%d\n", result[1]);
-	printf("%d\n", result[2]);
-	printf("%d\n", result[3]);
+	result = get_solution( border_value, 4);
+	printf("RESULT ::::\n");
+	print_solution(result, 4);
 }

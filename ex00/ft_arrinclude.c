@@ -6,9 +6,11 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 17:53:08 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 12:42:56 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 16:22:27 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 int	ft_arrinclude(int *array, int test)
 {

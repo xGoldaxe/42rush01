@@ -8,8 +8,8 @@ int main()
 {
 	int 	*solutions;
 	int		*border_value;
-	char	tab[17] = "1322312213223212";
-	char	sol[17] = "43";
+	char	tab[17] = "4321122243211222";
+	char	sol[17] = "";
 	int 	i;
 	int		*result;
 
@@ -18,16 +18,18 @@ int main()
 	i = 0;
 	while (i < 16)
 	{
-		ft_arradd(tab[i], border_value);
+		ft_arradd(tab[i] - '0', border_value);
 		i++;
 	}
 	i = 0;
-	while (i < 3)
+	while (i < 7)
 	{
-		ft_arradd(sol[i], solutions);
+		ft_arradd(sol[i] - '0', solutions);
 		i++;
 	}
 	result = test_solution(solutions, border_value, 4);
 	printf("%d\n", result[0]);
 	printf("%d\n", result[1]);
+	//printf("%d\n", result[2]);
+	//printf("%d\n", result[3]);
 }

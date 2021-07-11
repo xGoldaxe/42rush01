@@ -6,7 +6,7 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 19:23:38 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 12:43:29 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 18:44:23 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	*ft_arrreverse(int *array)
 	len_array = get_array_size(array) - 1;
 	i = 0;
 	rep = (len_array / 2) + len_array % 2;
-	while (len_array > i)
+	while (rep > i)
 	{
 		swap(&array[i], &array[len_array - i]);
 		i++;
