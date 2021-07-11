@@ -6,7 +6,7 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 17:25:57 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 18:45:33 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 20:42:25 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,19 @@ int	test_border(int *values, int *bor, int pos, int po)
 
 	size = get_array_size(bor) / 4;
 	result = 0;
-	//printf("%d %d %d %d\n", values[0], values[1], values[2], values[3]);
-	//printf("%d %d %d %d\n", reversed[0], reversed[1], reversed[2], reversed[3]);
-	//printf("left:%d, right:%d\n",ft_graduation_value(values),ft_graduation_value(reversed));
-	if (get_array_size(values) == size)
-	{
-		if (ft_graduation_value(values) == bor[(size * pos) + po]
-			&& ft_graduation_value(reversed) == bor[(size * (pos + 1)) + po])
-			result = 1;
-	}
-	else
-	{
-		if (ft_graduation_value(values) <= bor[(size * pos) + po]
-			&& ft_graduation_value(reversed) <= bor[(size * (pos + 1)) + po])
-			result = 1;
-	}
+	//if (get_array_size(values) == size)
+	//{
+	printf("left; %d %d", ft_graduation_value(values), bor[(size * pos) + po]);
+	if (ft_graduation_value(values) == bor[(size * pos) + po]
+		&& ft_graduation_value(reversed) == bor[(size * (pos + 1)) + po])
+		result = 1;
+	//}
+	//else
+	//{
+	//	if (ft_graduation_value(values) <= bor[(size * pos) + po]
+	//		&& ft_graduation_value(reversed) <= bor[(size * (pos + 1)) + po])
+	//		result = 1;
+	//}
 	free(reversed);
 	return result;
 }
@@ -63,7 +61,12 @@ int	test_line(int *solution, int *border_value, int size, int index)
 	if (ft_arrinclude(values_on_line, index) == 1)
 		return (0);
 	ft_arradd(index, values_on_line);
-	result = test_border(values_on_line, border_value, 2, value_line);
+	if ((get_array_size(solution) % size) == (size - 1))
+	{
+		result = test_border(values_on_line, border_value, 2, value_line);
+	}
+	else 
+		result = 1;
 	free(values_on_line);
 	return (result);
 }
@@ -90,7 +93,10 @@ int	test_column(int *solution, int *border_value, int size, int index)
 		return (0);
 	}
 	ft_arradd(index, values_on_column);
-	result = test_border(values_on_column, border_value, 0, value_column);
+	if (value_line == (size - 1))
+		result = test_border(values_on_column, border_value, 0, value_column);
+	else
+		result = 1;
 	free(values_on_column);
 	return (result);
 }
@@ -99,12 +105,12 @@ int	test_value(int *solution, int *border_value, int size, int index)
 {
 	if (test_line(solution, border_value, size, index) == 0)
 	{
-		//printf("line %d\n", index);
+		printf("line %d\n", index);
 		return (0);
 	}
 	if (test_column(solution, border_value, size, index) == 0)
 	{
-		//printf("col %d\n", index);
+		printf("col %d\n", index);
 		return (0);
 	}
 	return (1);

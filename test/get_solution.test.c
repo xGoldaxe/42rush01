@@ -9,7 +9,7 @@ int main()
 {
 	int 	*solutions;
 	int		*border_value;
-	char	tab[17] = "2132221324132122";
+	char	tab[17] = "1322312213223212";
 	int 	i;
 	int		*result;
 

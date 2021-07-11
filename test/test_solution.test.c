@@ -8,8 +8,8 @@ int main()
 {
 	int 	*solutions;
 	int		*border_value;
-	char	tab[17] = "4321122243211222";
-	char	sol[17] = "";
+	char	tab[17] = "2132221324132122";
+	char	sol[17] = "123";
 	int 	i;
 	int		*result;
 
@@ -22,7 +22,7 @@ int main()
 		i++;
 	}
 	i = 0;
-	while (i < 7)
+	while (i < 3)
 	{
 		ft_arradd(sol[i] - '0', solutions);
 		i++;
