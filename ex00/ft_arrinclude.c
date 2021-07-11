@@ -6,7 +6,7 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 17:53:08 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/10 18:03:59 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 11:35:07 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_arrinclude(int *array, int test)
 	{
 		if (test == array[i])
 			return (1);
+		i++;
 	}
 	return (0);
 }
