@@ -6,9 +6,11 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 17:25:57 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 12:40:37 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 13:01:17 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 int		*create_array(int size);
 int		get_array_size(int *array);
@@ -41,6 +43,7 @@ int	test_line(int *solution, int *border_value, int size, int index)
 {
 	int	*values_on_line;
 	int	value_line;
+	int	result;
 
 	values_on_line = create_array(size + 1);
 	value_line = (get_array_size(solution) + 1) / size;
@@ -50,7 +53,9 @@ int	test_line(int *solution, int *border_value, int size, int index)
 		return (0);
 	}
 	ft_arradd(index, values_on_line);
-	return (test_border(values_on_line, border_value, 2, value_line));
+	result = test_border(values_on_line, border_value, 2, value_line);
+	free(values_on_line);
+	return (result);
 }
 
 int	test_column(int *solution, int *border_value, int size, int index)
@@ -59,6 +64,7 @@ int	test_column(int *solution, int *border_value, int size, int index)
 	int	value_column;
 	int	value_line;
 	int	i;
+	int	result;
 
 	values_on_column = create_array(size + 1);
 	value_column = (get_array_size(solution) + 1) % size;
@@ -72,7 +78,9 @@ int	test_column(int *solution, int *border_value, int size, int index)
 	if (ft_arrinclude(values_on_column, index) == 1)
 		return (0);
 	ft_arradd(index, values_on_column);
-	return (test_border(values_on_column, border_value, 0, value_column));
+	result = test_border(values_on_column, border_value, 0, value_column);
+	free(values_on_column);
+	return (result);
 }
 
 int	test_value(int *solution, int *border_value, int size, int index)

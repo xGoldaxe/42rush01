@@ -6,7 +6,7 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 19:23:38 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/10 19:43:53 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 12:43:29 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	swap(int *a, int *b)
 
 int	*ft_arrreverse(int *array)
 {
-	int i;
-	int len_array;
-	int rep;
+	int	i;
+	int	len_array;
+	int	rep;
 
 	len_array = get_array_size(array) - 1;
 	i = 0;

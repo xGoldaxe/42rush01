@@ -6,13 +6,13 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 17:53:08 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 11:35:07 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 12:42:56 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_arrinclude(int *array, int test)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i] != -1)
