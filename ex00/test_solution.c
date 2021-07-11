@@ -6,7 +6,7 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 17:25:57 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 11:41:25 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 12:40:37 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@ void	ft_arrcpy(int *src, int *dest);
 int		ft_arrinclude(int *array, int test);
 int		ft_graduation_value(int *array_values);
 void	ft_arradd(int src, int *dest);
+
+int	test_border(int *values, int *bor, int pos, int po)
+{
+	int	size;
+
+	size = get_array_size(bor) / 4;
+	if (get_array_size(values) == size)
+	{
+		if (ft_graduation_value(values) == bor[(size * pos) + po]
+			&& ft_graduation_value(values) == bor[(size * (pos + 1)) + po])
+			return (1);
+	}
+	else
+	{
+		if (ft_graduation_value(values) <= bor[(size * pos) + po]
+			&& ft_graduation_value(values) <= bor[(size * (pos + 1)) + po])
+			return (1);
+	}
+	return (0);
+}
 
 int	test_line(int *solution, int *border_value, int size, int index)
 {
@@ -30,19 +50,7 @@ int	test_line(int *solution, int *border_value, int size, int index)
 		return (0);
 	}
 	ft_arradd(index, values_on_line);
-	if (get_array_size(values_on_line) == size)
-	{
-		if (ft_graduation_value(values_on_line) == border_value[(size * 2) + value_line]
-			&& ft_graduation_value(values_on_line) == border_value[(size * 3) + value_line])
-			return (1);
-	}
-	else
-	{
-		if (ft_graduation_value(values_on_line) <= border_value[(size * 2) + value_line]
-			&& ft_graduation_value(values_on_line) <= border_value[(size * 3) + value_line])
-			return (1);
-	}
-	return (0);
+	return (test_border(values_on_line, border_value, 2, value_line));
 }
 
 int	test_column(int *solution, int *border_value, int size, int index)
@@ -64,19 +72,7 @@ int	test_column(int *solution, int *border_value, int size, int index)
 	if (ft_arrinclude(values_on_column, index) == 1)
 		return (0);
 	ft_arradd(index, values_on_column);
-	if (get_array_size(values_on_column) == size)
-	{
-		if (ft_graduation_value(values_on_column) == border_value[(size * 0) + value_column]
-			&& ft_graduation_value(values_on_column) == border_value[(size * 1) + value_column])
-			return (1);
-	}
-	else
-	{
-		if (ft_graduation_value(values_on_column) <= border_value[(size * 0) + value_column]
-			&& ft_graduation_value(values_on_column) <= border_value[(size * 1) + value_column])
-			return (1);
-	}
-	return (0);
+	return (test_border(values_on_column, border_value, 0, value_column));
 }
 
 int	test_value(int *solution, int *border_value, int size, int index)
