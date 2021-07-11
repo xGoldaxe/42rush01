@@ -6,12 +6,11 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 17:25:57 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 20:42:25 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 22:44:26 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int		*create_array(int size);
 int		get_array_size(int *array);
@@ -26,27 +25,17 @@ int	test_border(int *values, int *bor, int pos, int po)
 	int	result;
 	int	size;
 	int	*reversed;
+
 	reversed = create_array(get_array_size(values) + 1);
 	ft_arrcpy(values, reversed);
 	ft_arrreverse(reversed);
-
 	size = get_array_size(bor) / 4;
 	result = 0;
-	//if (get_array_size(values) == size)
-	//{
-	printf("left; %d %d", ft_graduation_value(values), bor[(size * pos) + po]);
 	if (ft_graduation_value(values) == bor[(size * pos) + po]
 		&& ft_graduation_value(reversed) == bor[(size * (pos + 1)) + po])
 		result = 1;
-	//}
-	//else
-	//{
-	//	if (ft_graduation_value(values) <= bor[(size * pos) + po]
-	//		&& ft_graduation_value(reversed) <= bor[(size * (pos + 1)) + po])
-	//		result = 1;
-	//}
 	free(reversed);
-	return result;
+	return (result);
 }
 
 int	test_line(int *solution, int *border_value, int size, int index)
@@ -62,10 +51,8 @@ int	test_line(int *solution, int *border_value, int size, int index)
 		return (0);
 	ft_arradd(index, values_on_line);
 	if ((get_array_size(solution) % size) == (size - 1))
-	{
 		result = test_border(values_on_line, border_value, 2, value_line);
-	}
-	else 
+	else
 		result = 1;
 	free(values_on_line);
 	return (result);
@@ -89,9 +76,7 @@ int	test_column(int *solution, int *border_value, int size, int index)
 		i++;
 	}
 	if (ft_arrinclude(values_on_column, index) == 1)
-	{
 		return (0);
-	}
 	ft_arradd(index, values_on_column);
 	if (value_line == (size - 1))
 		result = test_border(values_on_column, border_value, 0, value_column);
@@ -105,12 +90,10 @@ int	test_value(int *solution, int *border_value, int size, int index)
 {
 	if (test_line(solution, border_value, size, index) == 0)
 	{
-		printf("line %d\n", index);
 		return (0);
 	}
 	if (test_column(solution, border_value, size, index) == 0)
 	{
-		printf("col %d\n", index);
 		return (0);
 	}
 	return (1);

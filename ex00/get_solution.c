@@ -6,13 +6,11 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 14:32:04 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 19:29:06 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 22:46:35 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
 
 int		get_array_size(int *array);
 void	ft_arrcpy(int *src, int *dest);
@@ -20,23 +18,8 @@ void	ft_arradd(int src, int *dest);
 int		*create_array(int size);
 int		*test_solution(int *solution, int *border_value, int size);
 
-void	print_solution(int *solution, int size)
-{
-	int	i;
-
-	i = 0;
-	printf("\n----------\n");
-	while (i < (size * 4))
-	{
-		printf("%d %d %d %d\n", solution[i], solution[i + 1], solution[i + 2], solution[i + 3]);
-		i += size;
-	}
-	printf("\n---------\n");
-	read(1, NULL, 1);
-}
-
 //we go trough all possible solutions until we reach a solution.
-void	get_solution_branch(int *solution, int *border_value, int size, int *dest)
+void	get_sol_b(int *solution, int *border_value, int size, int *dest)
 {
 	int	actual_case;
 	int	number_of_case;
@@ -55,14 +38,9 @@ void	get_solution_branch(int *solution, int *border_value, int size, int *dest)
 		new_solution = create_array(number_of_case + 1);
 		ft_arrcpy(solution, new_solution);
 		ft_arradd(possible_case[i], new_solution);
-		print_solution(new_solution, size);
-		get_solution_branch(new_solution, border_value, size, dest);
+		get_sol_b(new_solution, border_value, size, dest);
 		free(new_solution);
 		i++;
-	}
-	if ((get_array_size(possible_case) == 0) && (actual_case < number_of_case))
-	{
-		printf("\nabort branch, size :%d \n", get_array_size(solution));
 	}
 	free(possible_case);
 }
@@ -76,7 +54,7 @@ int	*get_solution(int *border_value, int size)
 	number_of_case = size * size;
 	solution = create_array(number_of_case + 1);
 	dest_arr = create_array(number_of_case + 1);
-	get_solution_branch(solution, border_value, size, dest_arr);
+	get_sol_b(solution, border_value, size, dest_arr);
 	free(solution);
 	return (dest_arr);
 }
