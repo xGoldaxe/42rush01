@@ -6,11 +6,12 @@
 /*   By: pleveque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 14:32:04 by pleveque          #+#    #+#             */
-/*   Updated: 2021/07/11 12:58:16 by pleveque         ###   ########.fr       */
+/*   Updated: 2021/07/11 15:09:26 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int		get_array_size(int *array);
 void	ft_arrcpy(int *src, int *dest);
@@ -27,6 +28,7 @@ void	get_solution_branch(int *solution, int *border_value, int size, int *dest)
 	int	i;
 	int	*new_solution;
 
+	return ;
 	number_of_case = size * size;
 	actual_case = get_array_size(solution);
 	if (actual_case == number_of_case)
@@ -35,6 +37,7 @@ void	get_solution_branch(int *solution, int *border_value, int size, int *dest)
 	i = 0;
 	while ((i < get_array_size(possible_case)) && (get_array_size(dest) == 0))
 	{
+		printf("%d\n", number_of_case);
 		new_solution = create_array(number_of_case + 1);
 		ft_arrcpy(solution, new_solution);
 		ft_arradd(possible_case[i], new_solution);
